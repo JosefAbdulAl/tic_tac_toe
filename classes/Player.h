@@ -3,14 +3,11 @@
 
 class Player {
     public:
-        Player(int sign, bool my_turn);
+        Player(const int sign);
         int get_sign() const;
-        bool get_my_turn() const;
-        void change_turn();
 
     private:
-        int sign;
-        bool my_turn;
+        const int sign;
 };
 
 #endif // PLAYER_H
