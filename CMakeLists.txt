@@ -9,7 +9,7 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 
 # This will change the main exe target name, and thus the binary file name.
-set(MAIN_TARGET_NAME "game")
+set(MAIN_TARGET_NAME "tic_tac_toe")
 
 # Helper variabeles.
 set(SRC_FILES     src/Board.cpp

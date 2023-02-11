@@ -1,7 +1,7 @@
 #include <iostream>
-#include "classes/Player.h"
-#include "classes/Board.h"
-#include "classes/Game.h"
+#include "inc/Player.h"
+#include "inc/Board.h"
+#include "inc/Game.h"
 
 int main() {
     tic::Game game {};
