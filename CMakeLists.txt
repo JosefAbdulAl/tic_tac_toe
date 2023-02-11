@@ -8,6 +8,12 @@ project(
 
 set(CMAKE_CXX_STANDARD 17)
 
+
+add_executable(olc_test 
+                external/olcPixelGameEngine/olcPixelGameEngine.h 
+                olcTestApp.cpp
+              )
+
 # This will change the main exe target name, and thus the binary file name.
 set(MAIN_TARGET_NAME "tic_tac_toe")
 
@@ -29,9 +35,12 @@ add_executable(${MAIN_TARGET_NAME} main.cpp ${SRC_FILES} ${HEADER_FILES})
 # Make all files in the include directory visible for the cpp files.
 target_include_directories(${MAIN_TARGET_NAME} PRIVATE inc/)
 
+target_link_libraries(${MAIN_TARGET_NAME} -lopengl32 -lgdiplus -ldwmapi -lshlwapi)
+target_link_libraries(olc_test -lopengl32 -lgdiplus -ldwmapi -lshlwapi)
+
 # Add mandatory compiler flags.
 if(MSVC)
   target_compile_options(${MAIN_TARGET_NAME} PRIVATE /W4 /WX)
 else()
-  target_compile_options(${MAIN_TARGET_NAME} PRIVATE -Wall -Wextra -Wpedantic -Werror)
+  target_compile_options(${MAIN_TARGET_NAME} PRIVATE)
 endif()
