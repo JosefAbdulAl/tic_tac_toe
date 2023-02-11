@@ -12,17 +12,22 @@ set(CMAKE_CXX_STANDARD 17)
 set(MAIN_TARGET_NAME "game")
 
 # Helper variabeles.
-set(SRC_FILES classes/Board.cpp
-                classes/Game.cpp
-                classes/Player.cpp)
+set(SRC_FILES     src/Board.cpp
+                  src/Game.cpp
+                  src/Player.cpp
+                  )
 
-set(HEADER_FILES classes/Board.h
-                classes/Game.h
-                classes/Player.h)
+set(HEADER_FILES  inc/Board.h
+                  inc/Game.h
+                  inc/Player.h
+                  )
+
 
 # Add all source and header files to the main target.
 add_executable(${MAIN_TARGET_NAME} main.cpp ${SRC_FILES} ${HEADER_FILES})
 
+# Make all files in the include directory visible for the cpp files.
+target_include_directories(${MAIN_TARGET_NAME} PRIVATE inc/)
 
 # Add mandatory compiler flags.
 if(MSVC)
