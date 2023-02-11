@@ -2,12 +2,8 @@
 #include <limits>
 
 #include "Game.h"
-#include "Board.h"
-#include "Player.h"
 
 namespace tic {
-    Game::Game() : board{}, p1(Player(1)), p2(Player(2)), p1_turn(true) {}
-
     void Game::start() {
         while(!board.won(p1) and !board.won(p2) and !board.is_full()) {
             bool valid = false;

@@ -1,12 +1,15 @@
 #pragma once
 
-namespace tic {class Player {
-    public:
-        Player(const int sign);
-        int get_sign() const;
+#include "types.h"
 
-    private:
-        const int sign;
+namespace tic {
+    class Player {
+        public:
+            Player(const Sign sign);
+            Sign get_sign() const;
+
+        private:
+            const Sign sign;
     };
 }
 
