@@ -1,9 +1,9 @@
+#pragma once
+
 #include "Player.h"
 
-#ifndef BOARD_H
-#define BOARD_H
-
-class Board {
+namespace tic {
+    class Board {
     public:
         Board();
         void print_matrix() const;
@@ -17,6 +17,5 @@ class Board {
         bool check_row(Player const & p) const;
         bool check_col(Player const & p) const;
         bool check_diag(Player const & p) const;
-};
-
-#endif // BOARD_H
+    };
+}

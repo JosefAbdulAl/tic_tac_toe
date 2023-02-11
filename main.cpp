@@ -4,6 +4,8 @@
 #include "classes/Game.h"
 
 int main() {
-    Game game {};
-    return game.start();
+    tic::Game game {};
+    game.start();
+    
+    return 0;
 }

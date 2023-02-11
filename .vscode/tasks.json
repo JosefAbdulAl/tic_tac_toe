@@ -9,9 +9,10 @@
                 "-g",
                 "${workspaceFolder}\\*.cpp",
                 "${workspaceFolder}\\classes\\*.cpp",
-                "${workspaceFolder}\\classes\\*.h",
                 "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
+                "${fileDirname}\\${fileBasenameNoExtension}.exe",
+                "-O3",
+                "-Wall"
             ],
             "options": {
                 "cwd": "${fileDirname}"

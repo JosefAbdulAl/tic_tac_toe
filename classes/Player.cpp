@@ -1,7 +1,9 @@
 #include "Player.h"
 
-Player::Player(const int sign) : sign(sign) {}
+namespace tic {
+    Player::Player(const int sign) : sign(sign) {}
 
-int Player::get_sign() const {
-    return sign;
+    int Player::get_sign() const {
+        return sign;
+    }
 }
