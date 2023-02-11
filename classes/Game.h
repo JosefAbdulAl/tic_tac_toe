@@ -10,8 +10,8 @@ namespace tic {
 
         private:
             Board board;
-            Player p1;
-            Player p2;
+            const Player p1;
+            const Player p2;
             bool p1_turn;
             void change_turn();
     };
