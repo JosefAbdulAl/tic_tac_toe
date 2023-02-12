@@ -1,36 +1,67 @@
 #define OLC_PGE_APPLICATION
 #include "external/olcPixelGameEngine/olcPixelGameEngine.h"
 
-class Example : public olc::PixelGameEngine
+class TictacToeWindow : public olc::PixelGameEngine
 {
 public:
-	Example()
-	{
-		sAppName = "Example";
+	TictacToeWindow() {
+		sAppName = "TictacToe";
 	}
 
-public:
-	bool OnUserCreate() override
-	{
-		// Called once at the start, so create things here
+	bool OnUserCreate() override {
+    // Set up the initial state of the game
+    // ...
+
+    // Draw the lines for the 3x3 grid
+	draw_grid_lines();
+
+    return true;
+	}
+
+	bool OnUserUpdate(float fElapsedTime) override {
+    // Handle user input and update the game state
+		if(p1_turn) {
+			color = olc::RED;
+		}
+		else {
+			color = olc::BLUE;
+		}
+
+		change_tile_color(color);
 		return true;
 	}
 
-	bool OnUserUpdate(float fElapsedTime) override
-	{
-		// called once per frame
-		for (int x = 0; x < ScreenWidth(); x++)
-			for (int y = 0; y < ScreenHeight(); y++)
-				Draw(x, y, olc::Pixel(rand() % 255, rand() % 255, rand()% 255));	
-		return true;
+	private:
+	bool p1_turn = true;
+	olc::Pixel color {};
+
+	void draw_grid_lines() {
+		int w = ScreenWidth() / 3;
+    	int h = ScreenHeight() / 3;
+
+    	for (int i = 1; i < 3; i++) {
+        	DrawLine(i * w, 0, i * w, ScreenHeight(), olc::WHITE);
+        	DrawLine(0, i * h, ScreenWidth(), i * h, olc::WHITE);
+    	}
+	}
+
+	void change_tile_color(olc::Pixel color) {
+		if (GetMouse(0).bPressed) {
+			// Calculate which square was clicked
+			int x = GetMouseX() / (ScreenWidth() / 3);
+			int y = GetMouseY() / (ScreenHeight() / 3);
+			// Change the color of the clicked square
+			FillRect(x * (ScreenWidth() / 3), y * (ScreenHeight() / 3), ScreenWidth() / 3, ScreenHeight() / 3, color);
+			p1_turn = !p1_turn;
+		}
+		draw_grid_lines();
 	}
 };
 
 
-int main()
-{
-	Example demo;
-	if (demo.Construct(256, 240, 4, 4))
+int main() {
+	TictacToeWindow demo;
+	if (demo.Construct(240, 240, 4, 4))
 		demo.Start();
 
 	return 0;
